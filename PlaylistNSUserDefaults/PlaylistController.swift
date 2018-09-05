@@ -43,15 +43,11 @@ class PlaylistController {
 	// MARK: Persistence
 	
     func saveToPersistentStore() {
-		let userDefaults = UserDefaults.standard
-		let playlistDictionaries = playlists.map { $0.dictionaryRepresentation }
-        userDefaults.set(playlistDictionaries, forKey: PlaylistController.PlaylistsKey)
+
     }
     
     func loadFromPersistentStore() {
-		let userDefaults = UserDefaults.standard
-        guard let playlistDictionaries = userDefaults.object(forKey: PlaylistController.PlaylistsKey) as? [[String: Any]] else { return }
-        playlists = playlistDictionaries.compactMap { Playlist(dictionary: $0) }
+
     }
 	
 	// MARK: Properties 
