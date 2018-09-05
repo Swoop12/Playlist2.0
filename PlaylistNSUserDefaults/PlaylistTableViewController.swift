@@ -13,6 +13,7 @@ class PlaylistTableViewController: UITableViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		tableView.reloadData()
+    
 	}
 	
 	@IBAction func addButtonTapped(_ sender: Any) {
@@ -34,10 +35,12 @@ class PlaylistTableViewController: UITableViewController {
 		let playlist = PlaylistController.shared.playlists[indexPath.row]
 		cell.textLabel?.text = playlist.name
         
-        if playlist.songs.count == 1 {
+        guard let songs = playlist.songs else {return UITableViewCell()}
+        
+        if songs.count == 1 {
             cell.detailTextLabel?.text = "1 Song"
         } else {
-            cell.detailTextLabel?.text = "\(playlist.songs.count) Songs"
+            cell.detailTextLabel?.text = "\(songs.count) Songs"
         }
 		
 		return cell
